@@ -1,0 +1,82 @@
+<!doctype HTML>
+<HTML>
+<style>
+    .floatable{
+        position: absolute;
+        width: 100%;
+    }
+
+    .menu-btn {
+        display:block;
+        height: 5%;
+        width: 5%;
+        border-radius: 50%;
+        opacity: 20%;
+    }
+
+    .menu-btn:hover{
+        opacity: 50%;
+    }
+
+
+
+
+    .btn-img{
+
+        max-height: 100%;
+        max-width: 100%;
+    }
+</style>
+<body>
+
+
+<div id="main">
+
+    <div class="floatable">
+        <a class="menu-btn" id="menu-button">
+            <img src="earth.png" class="btn-img" alt="">
+        </a>
+
+
+        <div class="menu" id="menu">
+            <table>
+            <tr>
+                <td>Year</td><td><input type="range" min="1900" max="2200"></td>
+            </tr>
+            <tr>
+                <td>Temperature</td><td><input type="range" min="-50" max="50"></td>
+            </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+</div>
+
+</body>
+
+
+
+<script>
+    (()=>{
+        document.body.style.margin="0"
+        const canvas = document.getElementById("canvas");
+        const image = new Image();
+        image.src = "pexels-cinimod-photo-1188214.jpg";
+        image.onload = () =>{
+            canvas.getContext('2d').drawImage(image,0,0,4996,3331,0,0,window.innerWidth,window.innerHeight);
+        }
+        canvas.height=window.innerHeight;
+        canvas.width=window.innerWidth;
+        canvas.style.margin="0";
+        canvas.style.display="block"
+
+        document.getElementById("menu-button").onclick= ()=>{
+            const menu = document.getElementById("menu");
+            menu.hidden = !menu.hidden;
+            }
+    })()
+</script>
+</HTML>
